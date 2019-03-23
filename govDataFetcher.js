@@ -95,7 +95,6 @@ function cleanUp(){
         console.log("All records have been saved to DB.");
         mogoose.disconnect().then(() => {
             console.log("Database disconnected.");
-            //To Do: invoke python script.
             exec('python predictor.py', (err, stdout) => {
                 if (err) {
                     printErr(err);

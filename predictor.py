@@ -27,7 +27,7 @@ commodityDb = dbClient[dbNm]
 priceTbl = commodityDb[tableNm]
 
 # find record whose price haven't yet predicted
-latestDate = priceTbl.find().sort([("date", -1)]).limit(1)[0]["date"]
+latestDate = priceTbl.find({"modelPrice": {"$exists": True}}).sort([("date", -1)]).limit(1)[0]["date"]
 latestDateTime = datetime.date(*map(int, latestDate.split("/")))
 unpredicted = priceTbl.find({"date": latestDate})
 # load already trained models
