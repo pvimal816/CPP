@@ -1,12 +1,13 @@
 function addErrCode(obj, code, discription){
     obj[discription] = {
         "ERROR_CODE" : code,
-        "ERROR_DISCRIPTION" : discription
+        "ERROR_DISCRIPTION" : discription,
     };
 }
 var err = {};
 //occurs when no record from database matches with conditions.
 addErrCode(err, 4000, "RECORD_NOT_FOUND");
+addErrCode(err, 4001, "INVALID_API_REQUEST_PARAM");
 
 
 module.exports = {
@@ -16,8 +17,8 @@ module.exports = {
     //application configuration
     "interestedDistricts": ["ahmedabad", "sabarkantha", "vadodara(baroda)"],
     "interestedCommodities": ["cotton", "castor seed", "cummin seed(jeera)", "paddy(dhan)", "wheat", "Brinjal", "Tomato", "Potatoes"],
-    "maxDayToPredict": 30,
     //server configuration
     "port": 3000,
-    "error_codes": err
+    "error_codes": err,
+    "mode": "Developement"
 };

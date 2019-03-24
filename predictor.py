@@ -1,12 +1,8 @@
-# prints object in pritty form
-from pprint import pprint
-# mongodb drivers
-from pymongo import MongoClient
-# date handling
+
 import datetime
-# ML model persistence
+
 from joblib import load
-# ML price predictor
+from pymongo import MongoClient
 from sklearn import linear_model
 
 # helper function
