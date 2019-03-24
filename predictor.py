@@ -29,7 +29,7 @@ priceTbl = commodityDb[tableNm]
 # find record whose price haven't yet predicted
 latestDate = priceTbl.find({"modelPrice": {"$exists": True}}).sort([("date", -1)]).limit(1)[0]["date"]
 latestDateTime = datetime.date(*map(int, latestDate.split("/")))
-unpredicted = priceTbl.find({"date": latestDate})
+unpredicted = priceTbl.find({"date": latestDate, "modelPrice": {"$exists": True}})
 # load already trained models
 model = []
 for i in range(1, 31):
@@ -37,7 +37,6 @@ for i in range(1, 31):
 
 #loop through all different commodity and markets
 for i in unpredicted:
-    if(not "modelPrice" in i): continue
     #predict prices for 1 to 30 days in future
     for j in range(1, 31):
         predictedPrice =  model[j-1].predict([[latestDateTime.day, latestDateTime.month, i["modelPrice"]]])[0]
