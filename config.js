@@ -9,7 +9,6 @@ var err = {};
 addErrCode(err, 4000, "RECORD_NOT_FOUND");
 addErrCode(err, 4001, "INVALID_API_REQUEST_PARAM");
 
-
 module.exports = {
     //database configuration
     "dbURL": "mongodb://localhost:27017/CommodityPrices",
@@ -17,8 +16,10 @@ module.exports = {
     //application configuration
     "interestedDistricts": ["ahmedabad", "sabarkantha", "vadodara(baroda)"],
     "interestedCommodities": ["cotton", "castor seed", "cummin seed(jeera)", "paddy(dhan)", "wheat", "Brinjal", "Tomato", "Potatoes"],
+    "states": ["Gujarat"],
     //server configuration
     "port": 3000,
     "error_codes": err,
     "mode": "Developement"
+
 };
